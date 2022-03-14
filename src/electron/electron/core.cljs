@@ -33,7 +33,7 @@
 
 (defn setup-updater! [^js win]
   ;; manual/auto updater
-  (when-not linux?
+  (when-not true?
     (init-updater {:repo   "logseq/logseq"
                    :logger logger
                    :win    win})))
