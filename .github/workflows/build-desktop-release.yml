@@ -217,18 +217,6 @@ jobs:
     needs: [ build-linux, build-windows ]
     runs-on: ubuntu-18.04
     steps:
-      - name: Download MacOS x64 Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: logseq-darwin-x64-builds
-          path: ./
-
-      - name: Download MacOS arm64 Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: logseq-darwin-arm64-builds
-          path: ./
-
       - name: Download The Linux Artifacts
         uses: actions/download-artifact@v2
         with:
@@ -241,11 +229,6 @@ jobs:
           name: logseq-win64-builds
           path: ./
 
-      - name: Download Android Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: logseq-android-builds
-          path: ./
 
       - name: Generate SHA256 checksums
         run: |
@@ -284,18 +267,6 @@ jobs:
     needs: [ build-linux, build-windows ]
     runs-on: ubuntu-18.04
     steps:
-      - name: Download MacOS x64 Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: logseq-darwin-x64-builds
-          path: ./
-
-      - name: Download MacOS arm64 Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: logseq-darwin-arm64-builds
-          path: ./
-
       - name: Download The Linux Artifacts
         uses: actions/download-artifact@v2
         with:
@@ -306,12 +277,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: logseq-win64-builds
-          path: ./
-
-      - name: Download Android Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: logseq-android-builds
           path: ./
 
       - name: List files
