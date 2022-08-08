@@ -136,24 +136,4 @@
 
           (debug "Skip remote version [ahead of pre-release]" remote-version))))))
 
-(defn init-updater
-  [{:keys [repo _logger ^js _win] :as opts}]
-  (and prod? (not= false (cfgs/get-item :auto-update)) (init-auto-updater repo))
-  (let [check-channel "check-for-updates"
-        install-channel "install-updates"
-        check-listener (fn [_e & args]
-                         (when-not @*update-pending
-                           (reset! *update-pending true)
-                           (p/finally
-                             (check-for-updates (merge opts {:args args}))
-                             #(reset! *update-pending nil))))
-        install-listener (fn [_e quit-app?]
-                           (when-let [dest-file (:dest-file @*update-ready-to-install)]
-                             (open dest-file)
-                             (and quit-app? (js/setTimeout #(.quit app) 1000))))]
-    (.handle ipcMain check-channel check-listener)
-    (.handle ipcMain install-channel install-listener)
-    #(do
-       (.removeHandler ipcMain install-channel)
-       (.removeHandler ipcMain check-channel)
-       (reset! *update-pending nil))))
+((defn init-updater [{:keys [repo _logger ^js _win] :as opts}] nil)
