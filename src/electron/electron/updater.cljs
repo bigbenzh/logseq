@@ -136,4 +136,4 @@
 
           (debug "Skip remote version [ahead of pre-release]" remote-version))))))
 
-((defn init-updater [{:keys [repo _logger ^js _win] :as opts}] nil)
+(defn init-updater [{:keys [repo _logger ^js _win] :as opts}] nil)
